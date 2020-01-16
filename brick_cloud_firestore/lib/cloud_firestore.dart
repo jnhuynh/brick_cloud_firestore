@@ -1,33 +1,34 @@
 import 'package:brick_cloud_firestore_abstract/cloud_firestore_model.dart';
 import 'package:brick_core/core.dart' as brick;
 
-class FirebaseModelDictionary
-    extends brick.ModelDictionary<FirebaseModel, FirebaseAdapter<FirebaseModel>> {
-  const FirebaseModelDictionary(Map<Type, FirebaseAdapter<FirebaseModel>> mappings)
+class CloudFirestoreModelDictionary
+    extends brick.ModelDictionary<CloudFirestoreModel, CloudFirestoreAdapter<CloudFirestoreModel>> {
+  const CloudFirestoreModelDictionary(
+      Map<Type, CloudFirestoreAdapter<CloudFirestoreModel>> mappings)
       : super(mappings);
 }
 
-class FirebaseProvider implements brick.Provider<FirebaseModel> {
-  final FirebaseModelDictionary modelDictionary;
+class CloudFirestoreProvider implements brick.Provider<CloudFirestoreModel> {
+  final CloudFirestoreModelDictionary modelDictionary;
 
   // TODO: require this later on
-  // FirebaseUser firebaseAuthUser;
+  // CloudFirestoreUser firebaseAuthUser;
   // User user;
 
-  FirebaseProvider({
+  CloudFirestoreProvider({
     this.modelDictionary,
   });
 
   @override
-  Future<bool> delete<T extends FirebaseModel>(T instance,
-      {brick.Query query, brick.ModelRepository<FirebaseModel> repository}) {
+  Future<bool> delete<T extends CloudFirestoreModel>(T instance,
+      {brick.Query query, brick.ModelRepository<CloudFirestoreModel> repository}) {
     // TODO: implement delete
     return null;
   }
 
   @override
-  Future<List<T>> get<T extends FirebaseModel>(
-      {brick.Query query, brick.ModelRepository<FirebaseModel> repository}) async {
+  Future<List<T>> get<T extends CloudFirestoreModel>(
+      {brick.Query query, brick.ModelRepository<CloudFirestoreModel> repository}) async {
     // final adapter = modelDictionary.adapterFor[T];
 
     // // TODO: node name from adapter/model
@@ -42,8 +43,8 @@ class FirebaseProvider implements brick.Provider<FirebaseModel> {
   }
 
   @override
-  Future<bool> upsert<T extends FirebaseModel>(T instance,
-      {brick.Query query, brick.ModelRepository<FirebaseModel> repository}) {
+  Future<bool> upsert<T extends CloudFirestoreModel>(T instance,
+      {brick.Query query, brick.ModelRepository<CloudFirestoreModel> repository}) {
     return null;
     // final json = _buildJson(room);
 
@@ -95,21 +96,21 @@ class FirebaseProvider implements brick.Provider<FirebaseModel> {
   }
 }
 
-abstract class FirebaseAdapter<_Model extends brick.Model> implements brick.Adapter<_Model> {
+abstract class CloudFirestoreAdapter<_Model extends brick.Model> implements brick.Adapter<_Model> {
   /// Retrieves data under this key when deserializing
   String get fromKey;
 
   /// Submits data under this key when serializing
   String get toKey;
 
-  Future<_Model> fromFirebase(
+  Future<_Model> fromCloudFirestore(
     Map<String, dynamic> data, {
-    FirebaseProvider provider,
-    brick.ModelRepository<FirebaseModel> repository,
+    CloudFirestoreProvider provider,
+    brick.ModelRepository<CloudFirestoreModel> repository,
   });
-  Future<Map<String, dynamic>> toFirebase(
+  Future<Map<String, dynamic>> toCloudFirestore(
     _Model instance, {
-    FirebaseProvider provider,
-    brick.ModelRepository<FirebaseModel> repository,
+    CloudFirestoreProvider provider,
+    brick.ModelRepository<CloudFirestoreModel> repository,
   });
 }
