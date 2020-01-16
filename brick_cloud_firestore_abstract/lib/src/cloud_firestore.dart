@@ -1,26 +1,18 @@
-import 'package:brick_core/field_serializable.dart';
+import 'package:brick_cloud_firestore_abstract/annotations.dart';
 
-class CloudFirestore implements FieldSerializable {
-  final dynamic defaultValue;
-  final String fromGenerator;
-  final bool ignore;
-  final String name;
-  final bool nullable;
-  final String toGenerator;
-  final bool unique;
+/// An annotation used to specify a class to generate code for.
+class CloudFirestore {
+  final CloudFirestoreSerializable cloudFirestoreConfig;
 
   const CloudFirestore({
-    this.defaultValue,
-    this.fromGenerator,
-    this.ignore,
-    this.name,
-    this.nullable,
-    this.toGenerator,
-    this.unique,
+    this.cloudFirestoreConfig,
   });
 
   static const defaults = CloudFirestore(
-    ignore: false,
-    unique: false,
+    cloudFirestoreConfig: CloudFirestoreSerializable.defaults,
   );
+
+  CloudFirestore withDefaults() => CloudFirestore(
+        cloudFirestoreConfig: cloudFirestoreConfig ?? defaults.cloudFirestoreConfig,
+      );
 }
