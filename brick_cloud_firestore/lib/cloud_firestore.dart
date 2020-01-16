@@ -1,12 +1,6 @@
+import 'package:brick_cloud_firestore/cloud_firestore_model_dictionary.dart';
 import 'package:brick_cloud_firestore_abstract/cloud_firestore_model.dart';
 import 'package:brick_core/core.dart' as brick;
-
-class CloudFirestoreModelDictionary
-    extends brick.ModelDictionary<CloudFirestoreModel, CloudFirestoreAdapter<CloudFirestoreModel>> {
-  const CloudFirestoreModelDictionary(
-      Map<Type, CloudFirestoreAdapter<CloudFirestoreModel>> mappings)
-      : super(mappings);
-}
 
 class CloudFirestoreProvider implements brick.Provider<CloudFirestoreModel> {
   final CloudFirestoreModelDictionary modelDictionary;
@@ -94,23 +88,4 @@ class CloudFirestoreProvider implements brick.Provider<CloudFirestoreModel> {
     //   return await client.post(url, body: wrappedBody, headers: headers);
     // }
   }
-}
-
-abstract class CloudFirestoreAdapter<_Model extends brick.Model> implements brick.Adapter<_Model> {
-  /// Retrieves data under this key when deserializing
-  String get fromKey;
-
-  /// Submits data under this key when serializing
-  String get toKey;
-
-  Future<_Model> fromCloudFirestore(
-    Map<String, dynamic> data, {
-    CloudFirestoreProvider provider,
-    brick.ModelRepository<CloudFirestoreModel> repository,
-  });
-  Future<Map<String, dynamic>> toCloudFirestore(
-    _Model instance, {
-    CloudFirestoreProvider provider,
-    brick.ModelRepository<CloudFirestoreModel> repository,
-  });
 }
