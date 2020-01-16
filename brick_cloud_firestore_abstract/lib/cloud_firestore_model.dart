@@ -1,7 +1,7 @@
 import 'package:brick_core/core.dart';
 
-abstract class FirebaseModel extends Model {
+abstract class CloudFirestoreModel extends Model {
   final String uuid;
 
-  FirebaseModel({this.uuid});
+  CloudFirestoreModel({this.uuid});
 }
