@@ -1,14 +1,4 @@
-# brick_cloud_firestore_abstract
+# Brick Cloud Firestore Abstract
 
-A new Flutter package project.
+This package abstracts models and annotations required by both [brick_build](https://github.com/greenbits/brick/tree/master/packages/brick_build) (which requires `dart:mirrors`) and [brick_cloud_firestore] (which uses Flutter and does not support `dart:mirrors`). While admittedly unintuitive, these classes can be imported cleanly by utilizing a separate package.
 
-## Getting Started
-
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
