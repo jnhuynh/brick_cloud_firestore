@@ -1,6 +1,15 @@
 import 'package:brick_core/field_serializable.dart';
 
-// Per field annotation
+// Class to represent per field annotation after parsing
+///
+/// e.g.
+///
+/// @CloudFirestoreSerializable
+/// class User extends CloudFirestoreModel {
+///   @CloudFireStoreField
+///   final name;
+/// }
+
 class CloudFirestoreField implements FieldSerializable {
   final dynamic defaultValue;
   final String fromGenerator;
