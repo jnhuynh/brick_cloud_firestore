@@ -10,7 +10,7 @@ environment:
 dependencies:
   brick_core: '>=0.0.1 <1.0.0'
   brick_cloud_firestore_abstract:
-    path: '../brick_cloud_firestore_abstract'
+    path: ../brick_cloud_firestore_abstract
   cloud_firestore: ^0.12.10+2
   flutter:
     sdk: flutter
