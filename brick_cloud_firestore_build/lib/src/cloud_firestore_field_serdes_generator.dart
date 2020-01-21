@@ -6,6 +6,7 @@ import 'package:brick_cloud_firestore_abstract/cloud_firestore_model.dart';
 import 'package:brick_cloud_firestore_build/src/cloud_firestore_fields.dart';
 import 'package:meta/meta.dart';
 
+/// Base class for CloudFirestore serialize and deserialize generator.
 abstract class CloudFirestoreFieldSerdesGenerator<_Model extends CloudFirestoreModel>
     extends SerdesGenerator<CloudFirestoreField> {
   final String providerName = 'CloudFirestore';
