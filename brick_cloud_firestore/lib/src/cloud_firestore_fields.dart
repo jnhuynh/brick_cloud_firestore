@@ -4,7 +4,8 @@ import 'package:brick_cloud_firestore/src/cloud_firestore_serializable_annotatio
 import 'package:brick_cloud_firestore_abstract/annotations.dart';
 
 /// Discover all fields with `@CloudFirestoreField`
-class CloudFirestoreFields extends FieldsForClass<CloudFirestoreSerializable> {
+/// TODO: combine back into cloud_firestore_fields and pic a better class name to indicate that it is a field finder
+class CloudFirestoreFields extends FieldsForClass<CloudFirestoreFields> {
   @override
   final finder = CloudFirestoreSerializableAnnotationFinder();
 

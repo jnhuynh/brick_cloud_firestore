@@ -1,12 +1,15 @@
 import 'package:analyzer/dart/element/element.dart';
-import 'package:brick_build/src/adapter_generator.dart';
-import 'package:brick_build/src/annotation_super_generator.dart';
-import 'package:brick_build/src/serdes_generator.dart';
+// import 'package:brick_build/src/adapter_generator.dart';
+// import 'package:brick_build/src/annotation_super_generator.dart';
+// TODO: add tutorial
+import 'package:brick_build/generators.dart';
 import 'package:brick_cloud_firestore/src/cloud_firestore_field_serdes_generator.dart';
 import 'package:brick_cloud_firestore_abstract/annotations.dart';
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 
+/// TODO: add cloud_fire_store type checker for top level annotation
+/// Adapter generator
 /// Output serializing code for all models with the @[ConnectCloudFirestoreSerializableWithRest] annotation
 class CloudFirestoreSerializableGenerator
     extends AnnotationSuperGenerator<CloudFirestoreSerializable> {
@@ -19,9 +22,12 @@ class CloudFirestoreSerializableGenerator
   /// Defaults to `CloudFirestoreSerializable`.
   final String repositoryName;
 
+  /// These are prefix's for the generated adpter
   const CloudFirestoreSerializableGenerator({
     this.superAdapterName = 'CloudFirestoreSerializable',
-    this.repositoryName = 'CloudFirestoreSerializable',
+    // Don't add this because this is just a provider
+    // This property hints at the repostory
+    // this.repositoryName = 'CloudFirestoreSerializable',
   });
 
   /// Given an [element] and an [annotation], scaffold generators

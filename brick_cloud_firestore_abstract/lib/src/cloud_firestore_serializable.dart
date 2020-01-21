@@ -18,3 +18,14 @@ class CloudFirestoreSerializable {
     nullable: true,
   );
 }
+
+@CloudFirestoreSerializable
+class User extends CloudFirestoreModel {
+  @CloudFireStoreField
+  final name;
+}
+
+@FileSerializableWithCloudFireStore {
+  cloudFirestoreConfig:
+  fileCOnfig:
+}
