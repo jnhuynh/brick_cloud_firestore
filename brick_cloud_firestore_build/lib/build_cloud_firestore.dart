@@ -17,7 +17,7 @@ Builder cloudFirestoreAdaptersBuilder(options) {
   return AdapterBuilder<CloudFirestoreSerializable>(cloudFirestoreSerializableGenerator);
 }
 
-Builder offlineFirstModelDictionaryBuilder(options) {
+Builder cloudFirestoreModelDictionaryBuilder(options) {
   return ModelDictionaryBuilder<CloudFirestoreSerializable>(
     const CloudFirestoreModelDictionaryGenerator(),
     expectedImportRemovals: [
