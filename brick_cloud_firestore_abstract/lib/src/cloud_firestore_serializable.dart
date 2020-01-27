@@ -11,13 +11,7 @@
 /// }
 
 class CloudFirestoreSerializable {
-  final bool nullable;
+  const CloudFirestoreSerializable();
 
-  const CloudFirestoreSerializable({
-    this.nullable,
-  });
-
-  static const defaults = CloudFirestoreSerializable(
-    nullable: true,
-  );
+  static const defaults = CloudFirestoreSerializable();
 }
