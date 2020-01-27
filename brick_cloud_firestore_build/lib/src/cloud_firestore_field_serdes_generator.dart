@@ -8,7 +8,7 @@ import 'package:meta/meta.dart';
 
 /// Base class for CloudFirestore serialize and deserialize generator.
 abstract class CloudFirestoreFieldSerdesGenerator<_Model extends CloudFirestoreModel>
-    extends SerdesGenerator<CloudFirestoreField> {
+    extends SerdesGenerator<CloudFirestoreField, _Model> {
   final String providerName = 'CloudFirestore';
   final String repositoryName;
 

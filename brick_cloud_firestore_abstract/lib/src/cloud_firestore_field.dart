@@ -11,7 +11,7 @@ import 'package:brick_core/field_serializable.dart';
 /// }
 
 class CloudFirestoreField implements FieldSerializable {
-  final dynamic defaultValue;
+  final String defaultValue;
   final String fromGenerator;
   final bool ignore;
   final String name;
