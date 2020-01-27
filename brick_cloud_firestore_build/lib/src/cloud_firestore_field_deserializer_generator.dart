@@ -4,11 +4,11 @@ import 'package:brick_cloud_firestore_build/src/cloud_firestore_field_serdes_gen
 import 'package:brick_cloud_firestore_build/src/cloud_firestore_fields.dart';
 import 'package:brick_cloud_firestore_build/src/cloud_firestore_type_checker.dart';
 
-class CloudFirestoreFieldSerializerGenerator
+class CloudFirestoreFieldDeserializerGenerator
     extends CloudFirestoreFieldSerdesGenerator<CloudFirestoreModel> {
   final CloudFirestoreFields cloudFirestoreFields;
 
-  CloudFirestoreFieldSerializerGenerator(ClassElement element, CloudFirestoreFields fields,
+  CloudFirestoreFieldDeserializerGenerator(ClassElement element, CloudFirestoreFields fields,
       {String repositoryName})
       : this.cloudFirestoreFields = CloudFirestoreFields(element),
         super(element, fields, repositoryName: repositoryName);
