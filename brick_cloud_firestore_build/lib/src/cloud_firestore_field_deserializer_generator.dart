@@ -8,13 +8,23 @@ class CloudFirestoreFieldDeserializerGenerator
     extends CloudFirestoreFieldSerdesGenerator<CloudFirestoreModel> {
   final CloudFirestoreFields cloudFirestoreFields;
 
-  CloudFirestoreFieldDeserializerGenerator(ClassElement element, CloudFirestoreFields fields,
-      {String repositoryName})
-      : this.cloudFirestoreFields = CloudFirestoreFields(element),
+  CloudFirestoreFieldDeserializerGenerator(
+    ClassElement element,
+    CloudFirestoreFields fields, {
+    String repositoryName,
+  })  : this.cloudFirestoreFields = CloudFirestoreFields(element),
         super(element, fields, repositoryName: repositoryName);
 
   @override
   CloudFirestoreTypeChecker checkerForType(type) => CloudFirestoreTypeChecker(type);
+
+  @override
+  final doesDeserialize = true;
+
+  @override
+  String get adapterMethod => '''await $serializingFunctionName(
+    input, provider: provider, repository: repository
+  )''';
 
   @override
   String coderForField(field, checker, {wrappedInFuture, fieldAnnotation}) {
