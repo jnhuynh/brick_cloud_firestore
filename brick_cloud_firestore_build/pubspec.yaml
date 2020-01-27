@@ -9,6 +9,8 @@ environment:
 dependencies:
   analyzer: ^0.39.0
   brick_build: any
+  # brick_build:
+  #   path: ../brick/packages/brick_build
   brick_cloud_firestore_abstract:
     path: ../brick_cloud_firestore_abstract
   build: ^1.2.0

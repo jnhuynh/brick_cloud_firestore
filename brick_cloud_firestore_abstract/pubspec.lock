@@ -42,7 +42,7 @@ packages:
       name: brick_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.5"
   charcode:
     dependency: transitive
     description:

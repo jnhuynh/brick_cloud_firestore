@@ -8,6 +8,8 @@ environment:
 
 dependencies:
   brick_core: '>=0.0.1 <1.0.0'
+  # brick_core:
+  #   path: ../brick/packages/brick_core
   meta: '>=1.1.6 <2.0.0'
 
 dev_dependencies:

@@ -9,6 +9,8 @@ environment:
 
 dependencies:
   brick_core: '>=0.0.1 <1.0.0'
+  # brick_core:
+  #   path: ../brick/packages/brick_core
   brick_cloud_firestore_abstract:
     path: ../brick_cloud_firestore_abstract
   cloud_firestore: ^0.12.10+2
@@ -19,6 +21,8 @@ dependencies:
 dev_dependencies:
   build_runner: any
   brick_build: any
+  # brick_build:
+  #   path: ../brick/packages/brick_build
   flutter_test:
     sdk: flutter
   mockito: ^4.0.0

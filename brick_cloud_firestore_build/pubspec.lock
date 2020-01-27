@@ -42,7 +42,7 @@ packages:
       name: brick_build
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.3"
+    version: "0.0.4"
   brick_cloud_firestore_abstract:
     dependency: "direct main"
     description:
@@ -56,28 +56,7 @@ packages:
       name: brick_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.3+1"
-  brick_offline_first_abstract:
-    dependency: transitive
-    description:
-      name: brick_offline_first_abstract
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.3"
-  brick_rest:
-    dependency: transitive
-    description:
-      name: brick_rest
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.2"
-  brick_sqlite_abstract:
-    dependency: transitive
-    description:
-      name: brick_sqlite_abstract
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.2"
+    version: "0.0.5"
   build:
     dependency: "direct main"
     description:
