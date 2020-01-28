@@ -2,6 +2,7 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:brick_build/src/annotation_super_generator.dart';
 import 'package:brick_cloud_firestore_abstract/annotations.dart';
 import 'package:brick_build/src/serdes_generator.dart';
+import 'package:brick_cloud_firestore_build/src/cloud_firestore_field_deserializer_generator.dart';
 import 'package:brick_cloud_firestore_build/src/cloud_firestore_field_serializer_generator.dart';
 import 'package:brick_cloud_firestore_build/src/cloud_firestore_fields.dart';
 import 'package:source_gen/source_gen.dart';
@@ -21,7 +22,7 @@ class CloudFirestoreSerializableGenerator
   List<SerdesGenerator> buildGenerators(Element element, ConstantReader annotation) {
     final fields = CloudFirestoreFields(element);
 
-    final deserializer = CloudFirestoreFieldSerializerGenerator(
+    final deserializer = CloudFirestoreFieldDeserializerGenerator(
       element,
       fields,
       repositoryName: repositoryName,
