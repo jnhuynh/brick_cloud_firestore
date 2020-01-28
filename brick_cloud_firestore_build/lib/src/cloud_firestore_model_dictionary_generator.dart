@@ -5,7 +5,7 @@ class CloudFirestoreModelDictionaryGenerator extends ModelDictionaryGenerator {
   final requiredImports = """
 // ignore: unused_import
 import 'dart:convert';
-import 'package:brick_cloud_firestore/cloud_firestore.dart' show CloudFirestoreModel, CloudFirestoreAdapter, CloudFirestoreModelDictionary;
+import 'package:brick_cloud_firestore/cloud_firestore.dart';
 // ignore: unused_import, unused_shown_name
 import 'package:brick_core/core.dart' show Query, QueryAction;""";
 
