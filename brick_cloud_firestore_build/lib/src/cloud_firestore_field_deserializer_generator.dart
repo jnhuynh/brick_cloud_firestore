@@ -2,7 +2,6 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:brick_cloud_firestore_abstract/cloud_firestore_model.dart';
 import 'package:brick_cloud_firestore_build/src/cloud_firestore_field_serdes_generator.dart';
 import 'package:brick_cloud_firestore_build/src/cloud_firestore_fields.dart';
-import 'package:brick_cloud_firestore_build/src/cloud_firestore_type_checker.dart';
 
 class CloudFirestoreFieldDeserializerGenerator
     extends CloudFirestoreFieldSerdesGenerator<CloudFirestoreModel> {
@@ -14,9 +13,6 @@ class CloudFirestoreFieldDeserializerGenerator
     String repositoryName,
   })  : this.cloudFirestoreFields = CloudFirestoreFields(element),
         super(element, fields, repositoryName: repositoryName);
-
-  @override
-  CloudFirestoreTypeChecker checkerForType(type) => CloudFirestoreTypeChecker(type);
 
   @override
   final doesDeserialize = true;
