@@ -38,7 +38,12 @@ class CloudFirestoreProvider implements brick.Provider<CloudFirestoreModel> {
     final snapshot = await collection.getDocuments();
 
     final futureDocuments = snapshot.documents.map((snapshot) {
-      return adapter.fromCloudFirestore(snapshot.data, provider: this, repository: repository);
+      return adapter.fromCloudFirestore(
+        (snapshot.data ?? {})
+          ..addAll({CloudFirestoreModel.DOCUMENT_ID_SERIALIZER_NAME: snapshot.documentID}),
+        provider: this,
+        repository: repository,
+      );
     });
 
     return await Future.wait<T>(futureDocuments);

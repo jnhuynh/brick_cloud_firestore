@@ -5,10 +5,7 @@ import 'package:brick_offline_first_with_cloud_firestore_build/src/offline_first
 import 'package:brick_offline_first_with_cloud_firestore_build/src/offline_first_sqlite_builders.dart';
 import 'package:build/build.dart';
 
-final offlineFirstGenerator = const OfflineFirstGenerator(
-  superAdapterName: 'OfflineFirstWithRest',
-  repositoryName: 'OfflineFirstWithRest',
-);
+final offlineFirstGenerator = const OfflineFirstGenerator();
 
 Builder cloudFirestoreAdaptersBuilder(options) {
   return AdapterBuilder<CloudFirestoreSerializable>(offlineFirstGenerator);

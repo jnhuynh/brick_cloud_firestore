@@ -8,19 +8,10 @@ import 'package:brick_offline_first_abstract/annotations.dart';
 
 /// Output serializing code for all models with the @[ConnectOfflineFirstWithRest] annotation
 class OfflineFirstGenerator extends AnnotationSuperGenerator<ConnectOfflineFirstWithRest> {
-  /// The prefix to the adapter name; useful if extending `OfflineFirstRepository`.
-  /// Defaults to `OfflineFirst`.
-  final String superAdapterName;
+  final superAdapterName = 'OfflineFirstWithCloudFirestore';
+  final repositoryName = 'OfflineFirstWithCloudFirestore';
 
-  /// The prefix to the repository name, specified when declaring the repository type in
-  /// serializing functions; useful if extending `OfflineFirstRepository`.
-  /// Defaults to `OfflineFirst`.
-  final String repositoryName;
-
-  const OfflineFirstGenerator({
-    this.superAdapterName = 'OfflineFirst',
-    this.repositoryName = 'OfflineFirst',
-  });
+  const OfflineFirstGenerator();
 
   /// Given an [element] and an [annotation], scaffold generators
   List<SerdesGenerator> buildGenerators(Element element, ConstantReader annotation) {

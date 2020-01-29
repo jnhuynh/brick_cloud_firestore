@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:brick_build/generators.dart';
+import 'package:brick_cloud_firestore_abstract/cloud_firestore_model.dart';
 import 'package:brick_offline_first_abstract/abstract.dart';
 import 'package:brick_offline_first_with_cloud_firestore_build/src/offline_first_checker.dart';
 import 'package:brick_sqlite_build/generators.dart';
@@ -12,6 +13,10 @@ class _OfflineFirstSqliteSerialize extends SqliteSerialize<OfflineFirstWithRestM
 
   @override
   OfflineFirstChecker checkerForType(type) => OfflineFirstChecker(type);
+
+  @override
+  String get generateSuffix =>
+      "..addAll({'${CloudFirestoreModel.DOCUMENT_ID_SERIALIZER_NAME}': instance.documentId});";
 
   @override
   String coderForField(field, checker, {wrappedInFuture, fieldAnnotation}) {
@@ -53,6 +58,14 @@ class _OfflineFirstSqliteDeserialize extends SqliteDeserialize {
 
   @override
   OfflineFirstChecker checkerForType(type) => OfflineFirstChecker(type);
+
+  @override
+  String get generateSuffix {
+    final prior = super.generateSuffix.replaceAll(';', '');
+    final withDocumentId =
+        "..${CloudFirestoreModel.DOCUMENT_ID_FIELD_NAME} = data['${CloudFirestoreModel.DOCUMENT_ID_SERIALIZER_NAME}']";
+    return [prior, withDocumentId].join('\n') + ';';
+  }
 
   @override
   String coderForField(field, checker, {wrappedInFuture, fieldAnnotation}) {

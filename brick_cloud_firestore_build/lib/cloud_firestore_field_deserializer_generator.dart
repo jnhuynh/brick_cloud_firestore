@@ -15,6 +15,10 @@ class CloudFirestoreDeserializerGenerator
   @override
   final doesDeserialize = true;
 
+  @override
+  String get generateSuffix =>
+      "..${CloudFirestoreModel.DOCUMENT_ID_FIELD_NAME} = data['${CloudFirestoreModel.DOCUMENT_ID_SERIALIZER_NAME}'];";
+
   final providerName = 'CloudFirestore';
 
   @override

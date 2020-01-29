@@ -12,6 +12,7 @@ class _CloudFirestoreAnnotationFinder extends AnnotationFinder<CloudFirestore> {
 
     if (obj == null) {
       return CloudFirestore(
+        name: StringHelpers.snakeCase(element.name),
         ignore: CloudFirestore.defaults.ignore,
         nullable: CloudFirestore.defaults.nullable,
       );
