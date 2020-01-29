@@ -1,6 +1,7 @@
 import 'package:brick_cloud_firestore/cloud_firestore_model_dictionary.dart';
 import 'package:brick_cloud_firestore_abstract/cloud_firestore_model.dart';
 import 'package:brick_core/core.dart' as brick;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CloudFirestoreProvider implements brick.Provider<CloudFirestoreModel> {
   final CloudFirestoreModelDictionary modelDictionary;
@@ -14,78 +15,44 @@ class CloudFirestoreProvider implements brick.Provider<CloudFirestoreModel> {
   });
 
   @override
-  Future<bool> delete<T extends CloudFirestoreModel>(T instance,
-      {brick.Query query, brick.ModelRepository<CloudFirestoreModel> repository}) {
-    // TODO: implement delete
-    return null;
+  Future<bool> delete<T extends CloudFirestoreModel>(instance, {query, repository}) async {
+    assert(instance.documentId != null, 'Instance has not been sent or received from Firestore');
+    final adapter = modelDictionary.adapterFor[T];
+
+    final document =
+        Firestore.instance.collection(adapter.collectionNodeKey).document(instance.documentId);
+
+    try {
+      await document.delete();
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   @override
-  Future<List<T>> get<T extends CloudFirestoreModel>(
-      {brick.Query query, brick.ModelRepository<CloudFirestoreModel> repository}) async {
-    // final adapter = modelDictionary.adapterFor[T];
+  Future<List<T>> get<T extends CloudFirestoreModel>({query, repository}) async {
+    final adapter = modelDictionary.adapterFor[T];
 
-    // // TODO: node name from adapter/model
-    // CollectionReference roomCollection = Firestore.instance.collection('room');
-    // Query query = roomCollection.where('userUuid', isEqualTo: user.uuid);
-    // QuerySnapshot querySnapshot = await query.getDocuments();
+    final collection = Firestore.instance.collection(adapter.collectionNodeKey);
+    final snapshot = await collection.getDocuments();
 
-    // return querySnapshot.documents.map((DocumentSnapshot snapshot) {
-    //   return adapter.fromSnapshot(snapshot);
-    // }).toList();
-    return null;
+    final futureDocuments = snapshot.documents.map((snapshot) {
+      return adapter.fromCloudFirestore(snapshot.data, provider: this, repository: repository);
+    });
+
+    return await Future.wait<T>(futureDocuments);
   }
 
   @override
-  Future<bool> upsert<T extends CloudFirestoreModel>(T instance,
-      {brick.Query query, brick.ModelRepository<CloudFirestoreModel> repository}) {
-    return null;
-    // final json = _buildJson(room);
+  Future<T> upsert<T extends CloudFirestoreModel>(instance, {query, repository}) async {
+    final adapter = modelDictionary.adapterFor[T];
 
-    // CollectionReference roomCollection = _firestore.collection(_modelCollectionMap[Room]);
-    // DocumentReference ref = roomCollection.document(json['uuid']);
+    final collection = Firestore.instance.collection(adapter.collectionNodeKey);
+    final document = collection.document();
+    final data = await adapter.toCloudFirestore(instance, provider: this, repository: repository);
+    await document.updateData(data);
 
-    // await ref.setData(json);
-    // final snapshot = await ref.get();
-
-    // return Room.fromSnapshot(snapshot);
-    // return null;
-
-    //     final adapter = modelDictionary.adapterFor[_Model];
-    // final body = await adapter.toRest(instance, provider: this, repository: repository);
-
-    // final url = urlForModel<_Model>(query, instance);
-    // final resp = await _sendUpsertResponse(url, body, query, adapter.toKey);
-
-    // _logger.finest("caller=upsert url=$url statusCode=${resp?.statusCode} body=${resp?.body}");
-
-    // if (statusCodeIsSuccessful(resp?.statusCode)) {
-    //   return resp;
-    // } else {
-    //   _logger.warning(resp?.statusCode, resp?.body);
-    //   throw RestException(resp);
-
-    /// Sends serialized model data to an endpoint
-    // Future<http.Response> _sendUpsertResponse(
-    //   String url,
-    //   Map<String, dynamic> body, [
-    //   Query query,
-    //   String toKey,
-    // ]) async {
-    //   final encodedBody = jsonEncode(body);
-    //   final topLevelKey = (query?.params ?? {})['topLevelKey'] ?? toKey;
-    //   final wrappedBody = topLevelKey != null ? '{"$topLevelKey":$encodedBody}' : encodedBody;
-    //   final headers = headersForQuery(query);
-
-    //   if ((query?.params ?? {})['request'] == 'PUT') {
-    //     _logger.fine("PUT $url");
-    //     _logger.finer("method=PUT url=$url headers=$headers body=$wrappedBody");
-    //     return await client.put(url, body: wrappedBody, headers: headers);
-    //   }
-
-    //   _logger.fine("POST $url");
-    //   _logger.finer("method=POST url=$url headers=$headers body=$wrappedBody");
-    //   return await client.post(url, body: wrappedBody, headers: headers);
-    // }
+    return instance..documentId = document.documentID;
   }
 }
