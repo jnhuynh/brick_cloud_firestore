@@ -14,6 +14,13 @@ class CloudFirestoreSerializerGenerator extends CloudFirestoreSerdesGenerator<Cl
   final doesDeserialize = false;
 
   @override
+  List<String> get instanceFieldsAndMethods {
+    final nodeKey = element.name.toLowerCase();
+
+    return ["final String collectionNodeKey = '$nodeKey';"];
+  }
+
+  @override
   String coderForField(field, checker, {wrappedInFuture, fieldAnnotation}) {
     final fieldValue = serdesValueForField(field, fieldAnnotation.name, checker: checker);
 
