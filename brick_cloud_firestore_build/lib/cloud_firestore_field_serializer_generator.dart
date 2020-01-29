@@ -1,7 +1,7 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:brick_cloud_firestore_abstract/cloud_firestore_model.dart';
 import 'package:brick_cloud_firestore_build/src/cloud_firestore_field_serdes_generator.dart';
-import 'package:brick_cloud_firestore_build/src/cloud_firestore_fields.dart';
+import 'package:brick_cloud_firestore_build/cloud_firestore_fields.dart';
 
 class CloudFirestoreSerializerGenerator extends CloudFirestoreSerdesGenerator<CloudFirestoreModel> {
   CloudFirestoreSerializerGenerator(
@@ -23,7 +23,7 @@ class CloudFirestoreSerializerGenerator extends CloudFirestoreSerdesGenerator<Cl
 
       // bool, double, int, num, String, Map, Iterable, enum
     } else if ((checker.isDartCoreType) || checker.isMap) {
-      return '$fieldValue';
+      return fieldValue;
 
       // Iterable
     } else if (checker.isIterable) {
@@ -45,11 +45,11 @@ class CloudFirestoreSerializerGenerator extends CloudFirestoreSerdesGenerator<Cl
         )''';
       }
 
-      return '$fieldValue';
+      return fieldValue;
 
       // CloudFirestoreModel, Future<CloudFirestoreModel>
     } else if (checker.isSibling) {
-      final wrappedField = wrappedInFuture ? '(await $fieldValue)' : '$fieldValue';
+      final wrappedField = wrappedInFuture ? '(await $fieldValue)' : fieldValue;
 
       return 'await ${checker.unFuturedType}Adapter().toCloudFirestore($wrappedField ?? {})';
 

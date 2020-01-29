@@ -2,7 +2,7 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:brick_build/generators.dart';
 import 'package:brick_cloud_firestore_abstract/cloud_firestore_model.dart';
 import 'package:brick_cloud_firestore_build/src/cloud_firestore_field_serdes_generator.dart';
-import 'package:brick_cloud_firestore_build/src/cloud_firestore_fields.dart';
+import 'package:brick_cloud_firestore_build/cloud_firestore_fields.dart';
 
 class CloudFirestoreDeserializerGenerator
     extends CloudFirestoreSerdesGenerator<CloudFirestoreModel> {
