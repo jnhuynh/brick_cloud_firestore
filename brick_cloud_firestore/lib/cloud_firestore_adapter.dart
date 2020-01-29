@@ -5,7 +5,7 @@ abstract class CloudFirestoreAdapter<_Model extends Model> implements Adapter<_M
   /// All models should be nested under a top-level key.
   /// The collectionNode name is analogous to a SQLite table as it
   /// contains the documents within this collection.
-  String get collectionNode;
+  String get collectionNodeKey;
 
   Future<_Model> fromCloudFirestore(
     Map<String, dynamic> data, {

@@ -9,6 +9,10 @@ environment:
 dependencies:
   analyzer: ^0.39.0
   brick_build: any
+  brick_sqlite_build:
+    git:
+      url: git@github.com:greenbits/brick.git
+      path: packages/brick_sqlite_build
   brick_cloud_firestore_build:
     path: ../brick_cloud_firestore_build
   brick_cloud_firestore_abstract:
