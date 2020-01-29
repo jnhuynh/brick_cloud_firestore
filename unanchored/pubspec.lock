@@ -70,7 +70,7 @@ packages:
       path: "../brick_cloud_firestore_abstract"
       relative: true
     source: path
-    version: "0.0.1+1"
+    version: "0.0.1"
   brick_cloud_firestore_build:
     dependency: "direct dev"
     description:
@@ -85,6 +85,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.5"
+  brick_offline_first_abstract:
+    dependency: transitive
+    description:
+      name: brick_offline_first_abstract
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.5"
+  brick_rest:
+    dependency: transitive
+    description:
+      name: brick_rest
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.5"
+  brick_sqlite_abstract:
+    dependency: transitive
+    description:
+      name: brick_sqlite_abstract
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   build:
     dependency: transitive
     description:

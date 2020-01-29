@@ -22,20 +22,11 @@ class CloudFirestoreSerializableGenerator
   List<SerdesGenerator> buildGenerators(Element element, ConstantReader annotation) {
     final fields = CloudFirestoreFields(element);
 
-    final deserializer = CloudFirestoreFieldDeserializerGenerator(
-      element,
-      fields,
-      repositoryName: repositoryName,
-    );
-    final serializer = CloudFirestoreFieldSerializerGenerator(
-      element,
-      fields,
-      repositoryName: repositoryName,
-    );
+    final deserializer =
+        CloudFirestoreDeserializerGenerator(element, fields, repositoryName: repositoryName);
+    final serializer =
+        CloudFirestoreSerializerGenerator(element, fields, repositoryName: repositoryName);
 
-    return [
-      deserializer,
-      serializer,
-    ];
+    return [deserializer, serializer];
   }
 }

@@ -1,7 +1,9 @@
 import 'package:brick_core/core.dart';
+import 'package:brick_offline_first_abstract/abstract.dart';
 
-abstract class CloudFirestoreModel extends Model {
-  final String uuid;
-
-  CloudFirestoreModel({this.uuid});
+abstract class CloudFirestoreModel implements Model {
+  String get uuid;
 }
+
+abstract class OfflineFirstWithCloudFirestoreModel extends OfflineFirstModel
+    with CloudFirestoreModel {}

@@ -1,16 +1,15 @@
 name: brick_cloud_firestore_abstract
 description: Support for Brick Cloud Firestore that does not rely on dart:mirrors
 
-version: 0.0.1+1
+version: 0.0.1
 
 environment:
   sdk: '>=2.4.0 <3.0.0'
 
 dependencies:
-  brick_core: '>=0.0.1 <1.0.0'
-  # brick_core:
-  #   path: ../brick/packages/brick_core
+  brick_core: ^0.0.5
   meta: '>=1.1.6 <2.0.0'
+  brick_offline_first_abstract: ^0.0.5
 
 dev_dependencies:
   test: '>=1.9.4 <2.0.0'

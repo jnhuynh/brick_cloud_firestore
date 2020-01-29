@@ -9,48 +9,6 @@ final generateReader = generateLibraryForFolder(folder);
 
 void main() {
   group('CloudFirestoreSerializableGenerator', () {
-    group('incorrect', () {
-      test('annotatedMethod', () async {
-        final reader = await generateReader('annotated_method');
-        expect(
-          () async => await _generator.generate(reader, null),
-          throwsA(TypeMatcher<InvalidGenerationSourceError>()),
-        );
-      });
-
-      test('annotatedTopLevelVariable', () async {
-        final reader = await generateReader('annotated_top_level_variable');
-        expect(
-          () async => await _generator.generate(reader, null),
-          throwsA(TypeMatcher<InvalidGenerationSourceError>()),
-        );
-      });
-
-      test('IdField', () async {
-        final reader = await generateReader('id_field');
-        expect(
-          () async => await _generator.generate(reader, null),
-          throwsA(TypeMatcher<InvalidGenerationSourceError>()),
-        );
-      });
-
-      test('PrimaryKeyField', () async {
-        final reader = await generateReader('primary_key_field');
-        expect(
-          () async => await _generator.generate(reader, null),
-          throwsA(TypeMatcher<InvalidGenerationSourceError>()),
-        );
-      });
-
-      test('FutureIterableFuture', () async {
-        final reader = await generateReader('future_iterable_future');
-        expect(
-          () async => await _generator.generate(reader, null),
-          throwsA(TypeMatcher<InvalidGenerationSourceError>()),
-        );
-      });
-    });
-
     group('constructor arguments', () {
       test('repositoryName', () async {
         final generator = OfflineFirstGenerator(repositoryName: 'MyCustom');
@@ -101,23 +59,6 @@ void main() {
       });
     });
 
-    group('@ConnectOfflineFirstWithRest', () {
-      test('restSerializable#endpoint', () async {
-        await generateAdapterExpectation('rest_config_endpoint', _$restConfigEndpoint.output);
-      });
-
-      test('restSerializable#fromKey restSerializable#toKey', () async {
-        await generateAdapterExpectation(
-            'rest_config_response_keys', _$restConfigResponseKeys.output);
-      });
-
-      test('restSerializable#nullable', () {}, skip: 'Write implementation and then write test');
-
-      test('restSerializable#fieldRename', () async {
-        await generateExpectation('rest_config_field_rename', _$restConfigFieldRename.output);
-      });
-    });
-
     group('FieldSerializable', () {
       test('name', () async {
         await generateExpectation('specify_field_name', _$specifyFieldName.output);
@@ -133,32 +74,6 @@ void main() {
 
       test('nullable', () async {
         await generateExpectation('nullable_field', _$nullableField.output);
-      });
-    });
-
-    group('@OfflineFirst', () {
-      test('eager loading', () async {
-        await generateExpectation('eager_load', _$eagerLoad.output);
-      });
-
-      test('offlineFirstWhere', () async {
-        await generateExpectation('offline_first_where', _$offlineFirstWhere.output);
-      });
-    });
-
-    group('@Rest', () {
-      test('enumAsString', () async {
-        await generateExpectation('rest_enum_as_string', _$restEnumAsString.output);
-      });
-
-      test('ignoreFrom ignoreTo', () async {
-        await generateExpectation('rest_ignore_from_to', _$restIgnoreFromTo.output);
-      });
-    });
-
-    group('@Sqlite', () {
-      test('unique', () async {
-        await generateAdapterExpectation('sqlite_unique', _$sqliteUnique.output);
       });
     });
   });

@@ -4,10 +4,10 @@ import 'package:brick_cloud_firestore_build/src/cloud_firestore_model_dictionary
 import 'package:brick_cloud_firestore_build/src/cloud_firestore_serializable_generator.dart';
 import 'package:build/build.dart';
 
-final cloudFirestoreSerializableGenerator = const CloudFirestoreSerializableGenerator();
+final CloudFirestoreSerializableGenerator = const CloudFirestoreSerializableGenerator();
 
 Builder cloudFirestoreAdaptersBuilder(options) {
-  return AdapterBuilder<CloudFirestoreSerializable>(cloudFirestoreSerializableGenerator);
+  return AdapterBuilder<CloudFirestoreSerializable>(CloudFirestoreSerializableGenerator);
 }
 
 Builder cloudFirestoreModelDictionaryBuilder(options) {

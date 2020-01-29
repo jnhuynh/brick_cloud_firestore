@@ -6,11 +6,11 @@ import 'package:brick_core/field_serializable.dart';
 ///
 /// @CloudFirestoreSerializable
 /// class User extends CloudFirestoreModel {
-///   @CloudFireStoreField
+///   @CloudFirestore
 ///   final name;
 /// }
 
-class CloudFirestoreField implements FieldSerializable {
+class CloudFirestore implements FieldSerializable {
   final String defaultValue;
   final String fromGenerator;
   final bool ignore;
@@ -19,7 +19,7 @@ class CloudFirestoreField implements FieldSerializable {
   final String toGenerator;
   final bool unique;
 
-  const CloudFirestoreField({
+  const CloudFirestore({
     this.defaultValue,
     this.fromGenerator,
     this.ignore,
@@ -29,7 +29,7 @@ class CloudFirestoreField implements FieldSerializable {
     this.unique,
   });
 
-  static const defaults = CloudFirestoreField(
+  static const defaults = CloudFirestore(
     ignore: false,
     unique: false,
   );
