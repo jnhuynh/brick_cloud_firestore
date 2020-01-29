@@ -1,4 +1,5 @@
 import 'package:brick_cloud_firestore/cloud_firestore_model_dictionary.dart';
+import 'package:brick_cloud_firestore/src/query_firestore_transformer.dart';
 import 'package:brick_cloud_firestore_abstract/cloud_firestore_model.dart';
 import 'package:brick_core/core.dart' as brick;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -35,12 +36,13 @@ class CloudFirestoreProvider implements brick.Provider<CloudFirestoreModel> {
     final adapter = modelDictionary.adapterFor[T];
 
     final collection = Firestore.instance.collection(adapter.collectionNodeKey);
-    final snapshot = await collection.getDocuments();
+    final transformedCollection = QueryFirestoreTransformer(query, collection).asRef;
+    final snapshot = await transformedCollection.getDocuments();
 
     final futureDocuments = snapshot.documents.map((snapshot) {
       return adapter.fromCloudFirestore(
         (snapshot.data ?? {})
-          ..addAll({CloudFirestoreModel.DOCUMENT_ID_SERIALIZER_NAME: snapshot.documentID}),
+          ..addAll({CloudFirestoreModel.DOCUMENT_ID_FIELD_NAME: snapshot.documentID}),
         provider: this,
         repository: repository,
       );

@@ -16,7 +16,7 @@ class _OfflineFirstSqliteSerialize extends SqliteSerialize<OfflineFirstWithRestM
 
   @override
   String get generateSuffix =>
-      "..addAll({'${CloudFirestoreModel.DOCUMENT_ID_SERIALIZER_NAME}': instance.documentId});";
+      "..addAll({'${CloudFirestoreModel.DOCUMENT_ID_COLUMN_NAME}': instance.documentId});";
 
   @override
   String coderForField(field, checker, {wrappedInFuture, fieldAnnotation}) {
@@ -63,7 +63,7 @@ class _OfflineFirstSqliteDeserialize extends SqliteDeserialize {
   String get generateSuffix {
     final prior = super.generateSuffix.replaceAll(';', '');
     final withDocumentId =
-        "..${CloudFirestoreModel.DOCUMENT_ID_FIELD_NAME} = data['${CloudFirestoreModel.DOCUMENT_ID_SERIALIZER_NAME}']";
+        "..${CloudFirestoreModel.DOCUMENT_ID_FIELD_NAME} = data['${CloudFirestoreModel.DOCUMENT_ID_COLUMN_NAME}']";
     return [prior, withDocumentId].join('\n') + ';';
   }
 

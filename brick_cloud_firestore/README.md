@@ -1,14 +1,24 @@
-# brick_cloud_firestore
+# Brick Cloud Firestore
 
-A new Flutter package project.
+Firestore connection for Flutter apps using [Brick](https://github.com/greenbits/brick).
 
-## Getting Started
+## Supported `Query` Configuration
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+### `providerArgs`
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+The following map exactly to the Firestore API.
+
+* `limit`
+* `orderBy`
+
+When using `orderBy`, follow SQLite syntax::
+
+```dart
+Query(
+  providerArgs: {'orderBy': 'lastName ASC'},
+)
+```
+
+### `where:`
+
+All fields and associations are supported. Every `Compare` value **except** `Compare.notEqual` is supported.

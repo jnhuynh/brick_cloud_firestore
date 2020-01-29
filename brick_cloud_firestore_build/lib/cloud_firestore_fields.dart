@@ -12,7 +12,7 @@ class _CloudFirestoreAnnotationFinder extends AnnotationFinder<CloudFirestore> {
 
     if (obj == null) {
       return CloudFirestore(
-        name: StringHelpers.snakeCase(element.name),
+        name: element.name,
         ignore: CloudFirestore.defaults.ignore,
         nullable: CloudFirestore.defaults.nullable,
       );
@@ -21,7 +21,7 @@ class _CloudFirestoreAnnotationFinder extends AnnotationFinder<CloudFirestore> {
     return CloudFirestore(
       defaultValue: obj.getField('defaultValue').toStringValue(),
       ignore: obj.getField('ignore').toBoolValue() ?? CloudFirestore.defaults.ignore,
-      name: obj.getField('name').toStringValue() ?? StringHelpers.snakeCase(element.name),
+      name: obj.getField('name').toStringValue() ?? element.name,
       nullable: obj.getField('nullable').toBoolValue() ?? CloudFirestore.defaults.nullable,
       fromGenerator: obj.getField('fromGenerator').toStringValue(),
       toGenerator: obj.getField('toGenerator').toStringValue(),

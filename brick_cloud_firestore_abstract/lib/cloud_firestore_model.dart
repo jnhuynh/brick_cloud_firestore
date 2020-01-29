@@ -5,7 +5,7 @@ abstract class CloudFirestoreModel implements Model {
   String documentId;
 
   static const String DOCUMENT_ID_FIELD_NAME = 'documentId';
-  static const String DOCUMENT_ID_SERIALIZER_NAME = 'document_id';
+  static const String DOCUMENT_ID_COLUMN_NAME = 'document_id';
 }
 
 abstract class OfflineFirstWithCloudFirestoreModel extends OfflineFirstModel
