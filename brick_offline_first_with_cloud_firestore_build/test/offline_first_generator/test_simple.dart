@@ -17,14 +17,14 @@ Future<Simple> _$SimpleFromCloudFirestore(Map<String, dynamic> data,
     {CloudFirestoreProvider provider,
     OfflineFirstWithCloudFirestoreRepository repository}) async {
   return Simple(
-      someField: data['some_field'] == null ? null : data['some_field'] as int)
-    ..documentId = data['document_id'];
+      someField: data['someField'] == null ? null : data['someField'] as int)
+    ..documentId = data['documentId'];
 }
 
 Future<Map<String, dynamic>> _$SimpleToCloudFirestore(Simple instance,
     {CloudFirestoreProvider provider,
     OfflineFirstWithCloudFirestoreRepository repository}) async {
-  return {'some_field': instance.someField};
+  return {'someField': instance.someField};
 }
 
 Future<Simple> _$SimpleFromSqlite(Map<String, dynamic> data,
@@ -47,6 +47,7 @@ Future<Map<String, dynamic>> _$SimpleToSqlite(Simple instance,
 class SimpleAdapter extends OfflineFirstWithCloudFirestoreAdapter<Simple> {
   SimpleAdapter();
 
+  final String collectionNodeKey = 'simple';
   final Map<String, Map<String, dynamic>> fieldsToSqliteColumns = {
     'primaryKey': {
       'name': '_brick_id',
