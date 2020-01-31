@@ -1,11 +1,11 @@
 import 'package:brick_core/core.dart' as brick;
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class QueryFirestoreTransformer {
+class QueryCloudFirestoreTransformer {
   final brick.Query query;
   final CollectionReference ref;
 
-  QueryFirestoreTransformer(this.query, this.ref);
+  QueryCloudFirestoreTransformer(this.query, this.ref);
 
   CollectionReference get asRef {
     if (query == null) return ref;
