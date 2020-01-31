@@ -3,7 +3,7 @@ import 'package:brick_build/generators.dart';
 import 'package:brick_build/src/serdes_generator.dart';
 import 'package:brick_cloud_firestore_abstract/annotations.dart';
 import 'package:brick_cloud_firestore_abstract/cloud_firestore_model.dart';
-import 'package:brick_cloud_firestore_build/cloud_firestore_fields.dart';
+import 'package:brick_cloud_firestore_generator/cloud_firestore_fields.dart';
 import 'package:meta/meta.dart';
 
 class CloudFirestoreDeserializerGenerator<_Model extends CloudFirestoreModel>

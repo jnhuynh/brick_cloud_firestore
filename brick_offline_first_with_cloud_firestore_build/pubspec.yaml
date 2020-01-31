@@ -13,8 +13,8 @@ dependencies:
     git:
       url: git@github.com:greenbits/brick.git
       path: packages/brick_sqlite_build
-  brick_cloud_firestore_build:
-    path: ../brick_cloud_firestore_build
+  brick_cloud_firestore_generator:
+    path: ../brick_cloud_firestore_generator
   brick_cloud_firestore_abstract:
     path: ../brick_cloud_firestore_abstract
 

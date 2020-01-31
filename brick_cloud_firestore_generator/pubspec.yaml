@@ -1,4 +1,4 @@
-name: brick_cloud_firestore_build
+name: brick_cloud_firestore_generator
 description: Code generation library for Cloud Firestore
 
 version: 0.0.1
