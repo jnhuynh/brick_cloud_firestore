@@ -12,7 +12,7 @@ import 'package:brick_core/core.dart' show Query, QueryAction;
 // ignore: unused_import, unused_shown_name
 import 'package:sqflite/sqflite.dart' show DatabaseExecutor;""";
 
-  /// All classes annotated with `@ConnectOfflineFirstWithRest`
+  /// All classes annotated with `@ConnectOfflineFirstWithCloudFirestore`
   const OfflineFirstModelDictionaryGenerator();
 
   @override

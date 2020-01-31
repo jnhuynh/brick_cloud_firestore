@@ -1,13 +1,14 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:brick_build/src/annotation_super_generator.dart';
 import 'package:brick_build/src/serdes_generator.dart';
+import 'package:brick_cloud_firestore_abstract/annotations.dart';
 import 'package:brick_cloud_firestore_build/cloud_firestore_serdes_generator.dart';
 import 'package:brick_offline_first_with_cloud_firestore_build/src/offline_first_sqlite_generators.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:brick_offline_first_abstract/annotations.dart';
 
-/// Output serializing code for all models with the @[ConnectOfflineFirstWithRest] annotation
-class OfflineFirstGenerator extends AnnotationSuperGenerator<ConnectOfflineFirstWithRest> {
+/// Output serializing code for all models with the @[ConnectOfflineFirstCloudFirestore] annotation
+class OfflineFirstGenerator
+    extends AnnotationSuperGenerator<ConnectOfflineFirstWithCloudFirestore> {
   final superAdapterName = 'OfflineFirstWithCloudFirestore';
   final repositoryName = 'OfflineFirstWithCloudFirestore';
 

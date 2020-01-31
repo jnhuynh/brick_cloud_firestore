@@ -20,7 +20,7 @@ void main() {
   });
 }
 
-/// Output serializing code for all models with the @[ConnectOfflineFirstWithRest] annotation
+/// Output serializing code for all models with the @[ConnectOfflineFirstCloudFirestore] annotation
 class TestGenerator extends AnnotationSuperGenerator<CloudFirestoreSerializable> {
   final superAdapterName = 'OfflineFirstWithCloudFirestore';
   final repositoryName = 'OfflineFirstWithCloudFirestore';
