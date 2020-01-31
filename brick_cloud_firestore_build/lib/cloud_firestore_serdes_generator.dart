@@ -7,12 +7,12 @@ import 'package:brick_cloud_firestore_build/cloud_firestore_fields.dart';
 import 'package:brick_cloud_firestore_build/cloud_firestore_field_deserializer_generator.dart';
 import 'package:brick_cloud_firestore_build/cloud_firestore_field_serializer_generator.dart';
 
-class CloudFirestoreSerdes extends ProviderSerializable<CloudFirestoreSerializable> {
+class CloudFirestoreSerdesGenerator extends ProviderSerializable<CloudFirestoreSerializable> {
   /// Repository prefix passed to the generators. `Repository` will be appended and
   /// should not be included.
   final String repositoryName;
 
-  CloudFirestoreSerdes(
+  CloudFirestoreSerdesGenerator(
     Element element,
     ConstantReader reader, {
     this.repositoryName,

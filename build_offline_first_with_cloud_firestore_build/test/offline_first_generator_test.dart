@@ -10,7 +10,7 @@ final folder = 'offline_first_generator';
 final generateReader = generateLibraryForFolder(folder);
 
 void main() {
-  group('CloudFirestoreSerdes', () {
+  group('OfflineFirstGenerator', () {
     test('simple', () async {
       await generateAdapterExpectation('simple', _$simple.output);
     });

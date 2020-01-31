@@ -1,14 +1,21 @@
 import 'package:analyzer/dart/element/element.dart';
+import 'package:brick_build/generators.dart';
+import 'package:brick_build/src/serdes_generator.dart';
+import 'package:brick_cloud_firestore_abstract/annotations.dart';
 import 'package:brick_cloud_firestore_abstract/cloud_firestore_model.dart';
-import 'package:brick_cloud_firestore_build/src/cloud_firestore_field_serdes_generator.dart';
 import 'package:brick_cloud_firestore_build/cloud_firestore_fields.dart';
+import 'package:meta/meta.dart';
 
-class CloudFirestoreSerializerGenerator extends CloudFirestoreSerdesGenerator<CloudFirestoreModel> {
+class CloudFirestoreSerializerGenerator<_Model extends CloudFirestoreModel>
+    extends SerdesGenerator<CloudFirestore, _Model> {
+  final String providerName = 'CloudFirestore';
+  final String repositoryName;
+
   CloudFirestoreSerializerGenerator(
     ClassElement element,
     CloudFirestoreFields fields, {
-    String repositoryName,
-  }) : super(element, fields, repositoryName: repositoryName);
+    @required this.repositoryName,
+  }) : super(element, fields);
 
   @override
   final doesDeserialize = false;
