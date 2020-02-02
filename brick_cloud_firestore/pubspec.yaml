@@ -9,6 +9,7 @@ environment:
 
 dependencies:
   brick_core: ^0.0.5
+  brick_offline_first: any
   brick_cloud_firestore_abstract:
     path: ../brick_cloud_firestore_abstract
   cloud_firestore: ^0.12.10+2

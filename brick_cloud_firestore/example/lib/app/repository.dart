@@ -1,13 +1,13 @@
 import 'package:brick_cloud_firestore/cloud_firestore.dart';
-import 'package:brick_offline_first/offline_first.dart';
+import 'package:brick_cloud_firestore/cloud_firestore_repository.dart';
 // run flutter pub run build_runner build before using this example
 import 'package:pizza_shoppe/app/db/schema.g.dart';
 import 'brick.g.dart';
 
-class Repository extends OfflineFirstRepository {
+class Repository extends OfflineFirstWithCloudFirestoreRepository {
   Repository._()
       : super(
-          remoteProvider: CloudFirestoreProvider(
+          cloudFirestoreProvider: CloudFirestoreProvider(
             modelDictionary: cloudFirestoreModelDictionary,
           ),
           sqliteProvider: SqliteProvider(

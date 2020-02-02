@@ -1,7 +1,7 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:brick_build/generators.dart';
 import 'package:brick_cloud_firestore_abstract/annotations.dart';
-import 'package:brick_cloud_firestore_generator/cloud_firestore_serdes_generator.dart';
+import 'package:brick_cloud_firestore_generator/cloud_firestore_model_serdes_generator.dart';
 import 'package:test/test.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:brick_build/testing.dart';
@@ -30,7 +30,7 @@ class TestGenerator extends AnnotationSuperGenerator<CloudFirestoreSerializable>
   /// Given an [element] and an [annotation], scaffold generators
   List<SerdesGenerator> buildGenerators(Element element, ConstantReader annotation) {
     final cloudFirestore =
-        CloudFirestoreSerdesGenerator(element, annotation, repositoryName: repositoryName);
+        CloudFirestoreModelSerdesGenerator(element, annotation, repositoryName: repositoryName);
     return cloudFirestore.generators;
   }
 }
