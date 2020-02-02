@@ -2,8 +2,8 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:brick_build/generators.dart';
 import 'package:brick_cloud_firestore_abstract/cloud_firestore_model.dart';
 import 'package:brick_offline_first_with_cloud_firestore_build/src/offline_first_checker.dart';
-import 'package:brick_sqlite_build/generators.dart';
-import 'package:brick_sqlite_build/sqlite_serdes.dart';
+import 'package:brick_sqlite_generators/generators.dart';
+import 'package:brick_sqlite_generators/sqlite_model_serdes_generator.dart';
 import 'package:source_gen/source_gen.dart';
 
 class _OfflineFirstSqliteSerialize extends SqliteSerialize<OfflineFirstWithCloudFirestoreModel> {
@@ -107,7 +107,7 @@ class _OfflineFirstSqliteDeserialize extends SqliteDeserialize {
   }
 }
 
-class OfflineFirstSqliteSerdes extends SqliteSerdes {
+class OfflineFirstSqliteSerdes extends SqliteModelSerdesGenerator {
   OfflineFirstSqliteSerdes(Element element, ConstantReader reader, {String repositoryName})
       : super(element, reader, repositoryName: repositoryName);
 
