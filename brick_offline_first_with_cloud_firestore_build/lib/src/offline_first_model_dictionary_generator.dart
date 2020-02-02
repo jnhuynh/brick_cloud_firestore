@@ -32,7 +32,7 @@ $adapters
 final Map<Type, CloudFirestoreAdapter<CloudFirestoreModel>> cloudFirestoreMappings = {
   $dictionary
 };
-final cloudFirestoreModelDictionary = CloudFirestoreDictionary(cloudFirestoreMappings);
+final cloudFirestoreModelDictionary = CloudFirestoreModelDictionary(cloudFirestoreMappings);
 
 /// Sqlite mappings should only be used when initializing a [SqliteProvider]
 final Map<Type, SqliteAdapter<SqliteModel>> sqliteMappings = {

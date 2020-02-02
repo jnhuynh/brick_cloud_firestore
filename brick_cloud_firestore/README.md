@@ -1,6 +1,20 @@
 # Brick Cloud Firestore
 
-Firestore connection for Flutter apps using [Brick](https://github.com/greenbits/brick).
+Firestore connection for Flutter apps using [Brick](https://github.com/greenbits/brick). This package manages your Firestore schema: it is strongly discouraged to manipulate data without using this package.
+
+## Setup
+
+Add the following packages to your pubspec:
+
+```yaml
+dependencies:
+  brick_cloud_firestore: any
+dev_dependencies:
+  brick_offline_first_with_firestore_build: any
+  build_runner: any
+```
+
+And follow the regular [Brick setup](https://github.com/greenbits/brick#setup).
 
 ## Supported `Query` Configuration
 
