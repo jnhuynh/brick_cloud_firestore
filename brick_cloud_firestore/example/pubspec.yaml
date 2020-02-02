@@ -1,0 +1,36 @@
+name: pizza_shoppe
+description: An example of how to use the Cloud Firestore Brick connector
+
+version: 0.0.1
+
+environment:
+  sdk: ">=2.4.0 <3.0.0"
+  flutter: '>=1.9.0 <2.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  brick_cloud_firestore:
+    path: ../
+  brick_offline_first: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: any
+  brick_offline_first_with_cloud_firestore_build:
+    path: ../../brick_offline_first_with_cloud_firestore_build
+
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
