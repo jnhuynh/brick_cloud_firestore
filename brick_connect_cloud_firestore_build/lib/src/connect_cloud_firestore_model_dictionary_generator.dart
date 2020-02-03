@@ -5,9 +5,9 @@ class ConnectCloudFirestoreModelDictionaryGenerator extends ModelDictionaryGener
   final requiredImports = """
 // ignore: unused_import
 import 'dart:convert';
-import 'package:brick_cloud_firestore/cloud_firestore.dart' show CloudFirestoreModel, CloudFirestoreAdapter, CloudFirestoreModelDictionary;
+import 'package:brick_cloud_firestore/cloud_firestore.dart' show CloudFirestoreModel, CloudFirestoreAdapter, CloudFirestoreModelDictionary, CloudFirestoreProvider;
 // ignore: unused_import, unused_shown_name
-import 'package:brick_core/core.dart' show Query, QueryAction;""";
+import 'package:brick_core/core.dart';""";
 
   /// All classes annotated with `@ConnectCloudFirestore`
   const ConnectCloudFirestoreModelDictionaryGenerator();
@@ -30,6 +30,10 @@ final Map<Type, CloudFirestoreAdapter<CloudFirestoreModel>> cloudFirestoreMappin
   $dictionary
 };
 final cloudFirestoreModelDictionary = CloudFirestoreModelDictionary(cloudFirestoreMappings);
+
+class CloudFirestoreRepository extends SingleProviderRepository<CloudFirestoreModel> {
+  CloudFirestoreRepository() : super(CloudFirestoreProvider(modelDictionary: cloudFirestoreModelDictionary));
+}
 ''';
   }
 }
