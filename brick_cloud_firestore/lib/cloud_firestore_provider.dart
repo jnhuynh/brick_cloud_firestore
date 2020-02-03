@@ -58,7 +58,7 @@ class CloudFirestoreProvider implements brick.Provider<CloudFirestoreModel> {
     final collection = Firestore.instance.collection(adapter.collectionNodeKey);
     final document = collection.document();
     final data = await adapter.toCloudFirestore(instance, provider: this, repository: repository);
-    await document.updateData(data);
+    await document.setData(data);
 
     return instance..documentId = document.documentID;
   }
