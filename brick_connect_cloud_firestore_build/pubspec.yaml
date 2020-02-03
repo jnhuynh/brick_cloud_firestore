@@ -1,0 +1,21 @@
+name: brick_connect_cloud_firestore_build
+description: Code generation library for Cloud Firestore
+
+version: 0.0.1
+
+environment:
+  sdk: '>=2.4.0 <3.0.0'
+
+dependencies:
+  analyzer: ^0.39.0
+  brick_build:
+    git:
+      url: https://github.com/greenbits/brick.git
+      path: packages/brick_build
+  brick_cloud_firestore_generator:
+    path: ../brick_cloud_firestore_generator
+  brick_cloud_firestore_abstract:
+    path: ../brick_cloud_firestore_abstract
+
+dev_dependencies:
+  test: ">=1.9.4 <2.0.0"
