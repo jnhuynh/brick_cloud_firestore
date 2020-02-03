@@ -18,7 +18,7 @@ builders:
   brickAdaptersBuilder:
     import: "package:brick_connect_cloud_firestore_build/builder.dart"
     builder_factories: ["cloudFirestoreAdaptersBuilder"]
-    build_extensions: {".dart": [".adapter_build_offline_first.dart"]}
+    build_extensions: {".dart": [".adapter_build_connect_cloud_firestore.dart"]}
     build_to: cache
     auto_apply: root_package
     applies_builders: ["source_gen|combining_builder"]
