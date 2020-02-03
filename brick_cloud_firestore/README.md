@@ -35,4 +35,6 @@ Query(
 
 ### `where:`
 
-All fields and associations are supported. Every `Compare` value **except** `Compare.notEqual` is supported.
+All fields are supported. Every `Compare` value **except** `Compare.notEqual` is supported.
+
+Associations are not currently supported but are in active development.

@@ -24,7 +24,22 @@ class CloudFirestoreSerializerGenerator<_Model extends CloudFirestoreModel>
   List<String> get instanceFieldsAndMethods {
     final nodeKey = element.name.toLowerCase();
 
-    return ["final String collectionNodeKey = '$nodeKey';"];
+    final fieldsToAssociationNodes = unignoredFields.fold<List<String>>(<String>[], (acc, field) {
+      final checker = checkerForType(field.type);
+
+      if (checker.isSibling || (checker.isIterable && checker.isArgTypeASibling)) {
+        final _type = checker.isIterable ? checker.unFuturedArgType : checker.unFuturedType;
+        acc.add('''
+          '${field.name}': '${_type.getDisplayString().toLowerCase()}'
+        ''');
+      }
+      return acc;
+    });
+
+    return [
+      'final Map<String, String> fieldsToAssociationNodes = {${fieldsToAssociationNodes.join(',\n')}};',
+      "final String collectionNodeKey = '$nodeKey';",
+    ];
   }
 
   @override

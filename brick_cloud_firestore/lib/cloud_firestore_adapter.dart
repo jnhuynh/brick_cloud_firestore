@@ -20,6 +20,8 @@ abstract class CloudFirestoreAdapter<_Model extends CloudFirestoreModel>
     CloudFirestoreProvider provider,
     ModelRepository<CloudFirestoreModel> repository,
   });
+
+  Map<String, String> get fieldsToAssociationNodes;
 }
 
 abstract class OfflineFirstWithCloudFirestoreAdapter<
