@@ -14,6 +14,7 @@ Builder connectCloudFirestoreAggregateBuilder(options) => AggregateBuilder(requi
       "import 'package:brick_cloud_firestore_abstract/annotations.dart';",
       "import 'package:brick_cloud_firestore/cloud_firestore_adapter.dart';",
       "import 'package:brick_cloud_firestore/cloud_firestore_provider.dart';",
+      "import 'package:brick_cloud_firestore/cloud_firestore_repository.dart';",
     ]);
 
 Builder cloudFirestoreModelDictionaryBuilder(options) {

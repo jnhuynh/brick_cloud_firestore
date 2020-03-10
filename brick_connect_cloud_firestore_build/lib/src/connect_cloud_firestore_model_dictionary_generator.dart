@@ -30,10 +30,6 @@ final Map<Type, CloudFirestoreAdapter<CloudFirestoreModel>> cloudFirestoreMappin
   $dictionary
 };
 final cloudFirestoreModelDictionary = CloudFirestoreModelDictionary(cloudFirestoreMappings);
-
-class CloudFirestoreRepository extends SingleProviderRepository<CloudFirestoreModel> {
-  CloudFirestoreRepository() : super(CloudFirestoreProvider(modelDictionary: cloudFirestoreModelDictionary));
-}
 ''';
   }
 }
