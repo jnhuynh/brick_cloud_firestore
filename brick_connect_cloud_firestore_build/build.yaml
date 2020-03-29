@@ -1,0 +1,41 @@
+# Read about `build.yaml` at https://pub.dartlang.org/packages/build_config
+builders:
+  brickAggregateBuilder:
+    import: "package:brick_connect_cloud_firestore_build/builder.dart"
+    builder_factories: ["connectCloudFirestoreAggregateBuilder"]
+    build_extensions: {"$lib$": ["models.brick_aggregate.dart"]}
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
+    runs_before: ["brickAdaptersBuilder"]
+    auto_apply: root_package
+    defaults:
+      generate_for:
+        exclude:
+          - lib/app/adapters/*.dart
+          - app/adapters/*.dart
+          - lib/app/db/*.dart
+          - app/db/*.dart
+  brickAdaptersBuilder:
+    import: "package:brick_connect_cloud_firestore_build/builder.dart"
+    builder_factories: ["cloudFirestoreAdaptersBuilder"]
+    build_extensions: {".dart": [".adapter_build_connect_cloud_firestore.dart"]}
+    build_to: cache
+    auto_apply: root_package
+    applies_builders: ["source_gen|combining_builder"]
+    defaults:
+      generate_for:
+        include:
+          - lib/app/models/*.dart
+          - app/models/*.dart
+        exclude:
+          - lib/app/adapters/*.dart
+          - app/adapters/*.dart
+          - lib/app/db/*.dart
+          - app/db/*.dart
+  brickModelDictionaryBuilder:
+    import: "package:brick_connect_cloud_firestore_build/builder.dart"
+    builder_factories: ["cloudFirestoreModelDictionaryBuilder"]
+    build_extensions: {".brick_aggregate.dart": [".brick_aggregate.model_dictionary_build_connect_cloud_firestore.dart"]}
+    build_to: cache
+    auto_apply: root_package
+    applies_builders: ["source_gen|combining_builder"]

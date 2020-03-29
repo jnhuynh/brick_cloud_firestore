@@ -39,7 +39,7 @@ class CloudFirestoreProvider implements brick.Provider<CloudFirestoreModel> {
     final transformedCollection = QueryCloudFirestoreTransformer(query, collection).asRef;
     final snapshot = await transformedCollection.getDocuments();
 
-    final futureDocuments = snapshot.documents.map((snapshot) {
+    final futureDocuments = snapshot.documents.map<Future<T>>((snapshot) {
       return adapter.fromCloudFirestore(
         (snapshot.data ?? {})
           ..addAll({CloudFirestoreModel.DOCUMENT_ID_FIELD_NAME: snapshot.documentID}),
@@ -58,7 +58,7 @@ class CloudFirestoreProvider implements brick.Provider<CloudFirestoreModel> {
     final collection = Firestore.instance.collection(adapter.collectionNodeKey);
     final document = collection.document();
     final data = await adapter.toCloudFirestore(instance, provider: this, repository: repository);
-    await document.updateData(data);
+    await document.setData(data);
 
     return instance..documentId = document.documentID;
   }
