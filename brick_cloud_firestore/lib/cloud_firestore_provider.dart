@@ -36,8 +36,8 @@ class CloudFirestoreProvider implements brick.Provider<CloudFirestoreModel> {
     final adapter = modelDictionary.adapterFor[T];
 
     final collection = Firestore.instance.collection(adapter.collectionNodeKey);
-    final transformedCollection = QueryCloudFirestoreTransformer(query, collection).asRef;
-    final snapshot = await transformedCollection.getDocuments();
+    final firebaseQuery = QueryCloudFirestoreTransformer(query, collection).asFirebaseQuery;
+    final snapshot = await firebaseQuery.getDocuments();
 
     final futureDocuments = snapshot.documents.map<Future<T>>((snapshot) {
       return adapter.fromCloudFirestore(
