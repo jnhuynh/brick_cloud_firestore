@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class QueryCloudFirestoreTransformer {
   final brick.Query query;
-  final CollectionReference ref;
+  final Query ref;
 
   QueryCloudFirestoreTransformer(this.query, this.ref);
 
@@ -12,7 +12,7 @@ class QueryCloudFirestoreTransformer {
 
     var composedRef = ref;
     if (query.where != null && query.where.isNotEmpty) {
-      composedRef = query.where.fold<CollectionReference>(composedRef, (acc, condition) {
+      composedRef = query.where.fold<Query>(composedRef, (acc, condition) {
         return expandWhereCondition(condition, acc);
       });
     }
@@ -34,10 +34,10 @@ class QueryCloudFirestoreTransformer {
   /// TODO support associations
   Query expandWhereCondition(
     brick.WhereCondition condition,
-    CollectionReference composedRef,
+    Query composedRef,
   ) {
     if (condition.conditions != null && condition.conditions.isNotEmpty) {
-      return condition.conditions.fold<CollectionReference>(composedRef, (acc, _condition) {
+      return condition.conditions.fold<Query>(composedRef, (acc, _condition) {
         return expandWhereCondition(_condition, acc);
       });
     }
