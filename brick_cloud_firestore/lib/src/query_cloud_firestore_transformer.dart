@@ -7,7 +7,7 @@ class QueryCloudFirestoreTransformer {
 
   QueryCloudFirestoreTransformer(this.query, this.ref);
 
-  CollectionReference get asRef {
+  Query get asFirebaseQuery {
     if (query == null) return ref;
 
     var composedRef = ref;
@@ -32,8 +32,10 @@ class QueryCloudFirestoreTransformer {
   /// Recursively append a Firestore `.where` condition to the existing reference
   ///
   /// TODO support associations
-  CollectionReference expandWhereCondition(
-      brick.WhereCondition condition, CollectionReference composedRef) {
+  Query expandWhereCondition(
+    brick.WhereCondition condition,
+    CollectionReference composedRef,
+  ) {
     if (condition.conditions != null && condition.conditions.isNotEmpty) {
       return condition.conditions.fold<CollectionReference>(composedRef, (acc, _condition) {
         return expandWhereCondition(_condition, acc);
